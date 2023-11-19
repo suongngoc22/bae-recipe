@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #e9e3e3;
+}
+
+.mobile-container {
+    width: 400px;
+    background-color: white;
+    box-shadow: 0 0 10px 2px #3333331a;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+header {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+header input {
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background-color: rgb(249, 206, 213);
+    padding: 0.5rem 1rem;
+}
+
+header button {
+    border: none;
+    outline: none;
+    color: #aaa;
+    font-size: 1.1rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.fav-container {
+    text-align: center;
+    background-color: pink;
+    padding: 0.2rem;
+}
+
+.fav-meals {
+    display: flex;
+    padding: 0 10px;
+    list-style-type: none;
+    overflow-y: auto;
+    gap: 12px;
+}
+
+.fav-meals li {
+    cursor: pointer;
+    width: 85px;
+    margin-bottom: 0.5rem;
+}
+
+.fav-meals li img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px 2px #3333331a;
+    object-fit: cover;
+}
+
+.fav-meals li span {
+    font-size: 0.9rem;
+}
+
+
+.meals {
+    margin: 10px;
+    box-shadow: 0 0 10px 2px #3333331a;
+    border-radius: 3px;
+    position: relative;
+}
+
+.meals .random {
+    position: absolute;
+    top: 10px;
+    background-color: red;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+.meal-header {
+
+}
+
+
+.meal-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+.meal-body button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
