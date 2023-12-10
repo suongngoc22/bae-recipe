@@ -5,6 +5,36 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #ff7f11;
+    --primary-light: #ffa557;
+    --red: #ff1b1c;
+}
+
+/* width */
+::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -68,8 +98,8 @@ header button {
 
 .fav-container {
     text-align: center;
-    background-color: #ffbf6a85;
-    padding: 1rem;
+    background-color: #fff9f4;
+    padding: 1.1rem;
 }
 
 .fav-container h3 {
@@ -82,7 +112,7 @@ header button {
 .fav-meals {
     display: flex;
     margin: 0;
-    padding: 0;
+    padding: 8px;
     list-style-type: none;
     overflow-y: auto;
     gap: 10px;
@@ -99,7 +129,7 @@ header button {
     height: 60px;
     border-radius: 50%;
     border: 2px solid #fff;
-    box-shadow: 0 0 10px 2px #3333331a;
+    box-shadow: 0 0 10px 0px #3333331a;
     object-fit: cover;
 }
 
@@ -109,20 +139,32 @@ header button {
 
 
 .meals {
-    margin: 10px;
+    margin: 1rem;
     box-shadow: 0 0 10px 2px #3333331a;
     border-radius: 3px;
     position: relative;
 }
 
-.meals .random {
+.meals .random span {
     position: absolute;
-    top: 10px;
+    top: 14px;
+    left: -12px;
     background-color: red;
     color: white;
     padding: 0.25rem 0.5rem;
     font-size: 0.9rem;
     box-shadow: 0 10px 10px 2px #3333331a;
+}
+
+.meals .random span::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    border-top: 12px solid rgb(221, 0, 0);
+	border-left: 12px solid transparent;
+    width: 0;
+    height: 0;
 }
 
 .meal-header {
@@ -137,10 +179,14 @@ header button {
     padding-inline: 1rem;
 }
 
-.meal-body button {
+.meal-body .fav-btn {
     border: none;
-    outline: none;
     background-color: transparent;
     font-size: 1.1rem;
     cursor: pointer;
+    color: grey;
+}
+
+.meal-body .fav-btn.active {
+    color: var(--red);
 }
