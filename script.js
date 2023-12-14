@@ -28,7 +28,7 @@ function addMeal (mealData, random) {
             </button>
         </div>`;
 
-    meals.appendChild(meal);
+    meals.prepend(meal);
 
     const favBtn = meal.querySelector(".meal-body .fav-btn");
 
@@ -48,7 +48,8 @@ function addMeal (mealData, random) {
 
 
 async function getMealById (idMeal) {
-    const res = await fetch("www.themealdb.com/api/json/v1/1/lookup.php?i=" + idMeal);
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+    const res = await fetch(url);
 
     const resData = await res.json();
     const meal =  resData.meals[0];
@@ -57,19 +58,15 @@ async function getMealById (idMeal) {
 }
 
 async function getMealBySearch (term) {
-    const meal = await fetch("www.themealdb.com/api/json/v1/1/search.php?s=" + term);
+    const meal = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=" + term);
 }
 
 
 
 async function addMealLS (mealId) {
     const mealIds = getMealsLS();
-
-    console.log(mealId);
-    console.log(mealIds);
-    localStorage.setItem("mealIds", JSON.stringify([...mealIds, mealId]));
-
     
+    localStorage.setItem("mealIds", JSON.stringify([...mealIds, mealId]));
 }
 
 async function removeMealLS (mealId) {
@@ -79,37 +76,66 @@ async function removeMealLS (mealId) {
 }
 
 function getMealsLS () {
-    const mealIds = JSON.parse(localStorage.getItem("mealIds"));
+    const localMealIds = localStorage.getItem("mealIds");
+    if (localMealIds) {
+        return JSON.parse(localMealIds);
+    }
 
-    return mealIds === null ? [] : mealIds;
+    return [];
 }
 
 async function fetchFavMeals() {
+    favMeals.innerHTML = ``;
     const mealIds = getMealsLS();
-    console.log(mealIds);
-
-    // for (let i = 0; i < mealIds.length; i++) {
-    //     const mealId = mealIds[i];
-    //     let meal = await getMealById(mealId);
-    //     addMealFav(meal);   
-    // }
+    for (let i = 0; i < mealIds.length; i++) {
+        const mealId = mealIds[i];
+        const meal = await getMealById(mealId);
+        addMealFav(meal);   
+    }
 }
 
 function addMealFav (mealData) {
     const favMeal = document.createElement('li');
 
     favMeal.innerHTML = `
-        <li>
-            <img src=${mealData.strMealThumb} 
-                alt=${mealData.strMeal}
-            />
-            <span>${mealData.strMeal}</span>
-        </li> `;
+        <img src=${mealData.strMealThumb} 
+            alt=${mealData.strMeal}
+        />
+        <span>${mealData.strMeal}</span>
+        <div class="fav-meal-context hidden" id="fav-meal-context-${mealData.idMeal}"> 
+            <span class="fav-meal-detail">See detail</span>
+            <span class="fav-meal-delete">Delete</span>
+        </div>
+    `;
+    
+    // context menu
+    const favMealContexts = favMeal.getElementsByClassName("fav-meal-context");
+    
+    favMeal.addEventListener("click", () => {
+        for (let i = 0; i < favMealContexts.length; i++) {
+            
+            if (favMealContexts[i].id !== `fav-meal-context-${mealData.idMeal}`) {
+                favMealContexts[i].classList.add("hidden");          
+            } else {
+                favMealContexts[i].classList.toggle("hidden");
+            }
+        }
+    });
+
+    //delete action
+    const btnDelete = favMeal.querySelector(".fav-meal-delete");
+
+    btnDelete.addEventListener("click", () => {
+        removeMealLS(mealData.idMeal);
+        fetchFavMeals();
+    });
 
     favMeals.appendChild(favMeal);
 }
 
 getRandomMeal();
 fetchFavMeals();
+const reloadBtn = document.getElementById('reload-btn');
+reloadBtn.addEventListener("click", getRandomMeal);
 
 // https://coolors.co/visualizer/cbe896-fffffc-beb7a4-ff7f11-ff1b1c
