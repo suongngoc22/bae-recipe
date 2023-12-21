@@ -1,4 +1,3 @@
-
 const meals = document.getElementById("meals");
 const favMeals = document.getElementById("fav-meals");
 
@@ -56,12 +55,6 @@ async function getMealById (idMeal) {
 
     return meal;
 }
-
-async function getMealBySearch (term) {
-    const meal = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=" + term);
-}
-
-
 
 async function addMealLS (mealId) {
     const mealIds = getMealsLS();
@@ -135,6 +128,12 @@ function addMealFav (mealData) {
 
 getRandomMeal();
 fetchFavMeals();
+
+const searchBtn = document.getElementById('search');
+searchBtn.addEventListener("click", () => {
+    location.href = '/search.html';
+});
+
 const reloadBtn = document.getElementById('reload-btn');
 reloadBtn.addEventListener("click", getRandomMeal);
 

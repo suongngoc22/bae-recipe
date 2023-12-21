@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff7f11;
+    --primary-light: #ffa557;
+    --red: #ff1b1c;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+img {
+    width: 100%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    /* min-height: 100vh; */
+}
+
+/* common */
+
+.mobile-container {
+    width: 400px;
+    background-color: white;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.c-button {
+    font-size: 1.1rem;
+    background-color: transparent;
+    cursor: pointer;
+}

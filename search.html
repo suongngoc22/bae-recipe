@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bae Recipe</title>
+    <link rel="icon" href="images/recipe.png" type="image/svg" sizes="16x16">
+    <link rel="stylesheet" href="style.css">
+    <script src="search.js" type="module" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="search-wrapper">
+            <div class="search-container">
+                <button  class="c-button">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="search-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-term" placeholder="Pizza siu ngon" />
+                </div>
+                <span id="search">Search</span>
+            </div>
+            <ul class="search-recently" id="search-recently">
+                <li>
+                    <span>Banh trang tron</span>
+                    <i class="fa-solid fa-xmark"></i>
+                </li>
+                <li>
+                    <span>Tofu and shrimp paste</span>
+                    <i class="fa-solid fa-xmark"></i>
+                </li>
+                <li>
+                    <span>Healthy</span>
+                    <i class="fa-solid fa-xmark"></i>
+                </li>        
+                <li>
+                    <span>Bubble tea</span>
+                    <i class="fa-solid fa-xmark"></i>
+                </li>     
+            </ul>
+            <div class="meals-container">
+                <div class="meals" id="meals"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
