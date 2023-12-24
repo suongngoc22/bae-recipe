@@ -21,7 +21,7 @@ function addMeal (mealData, random) {
             <img src="${mealData.strMealThumb}" alt="">
         </div>
         <div class="meal-body">
-            <h4>${mealData.strMeal}</h4>
+            <h4 class="meal-name">${mealData.strMeal}</h4>
             <button class="fav-btn">
                 <i class="fas fa-heart"></i>
             </button>
@@ -131,7 +131,7 @@ fetchFavMeals();
 
 const searchBtn = document.getElementById('search');
 searchBtn.addEventListener("click", () => {
-    location.href = '/search.html';
+    location.href = './search.html';
 });
 
 const reloadBtn = document.getElementById('reload-btn');

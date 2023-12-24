@@ -9,6 +9,8 @@
     --primary: #ff7f11;
     --primary-light: #ffa557;
     --red: #ff1b1c;
+
+    --main-radius: 8px;
 }
 
 button {
@@ -69,12 +71,15 @@ body {
 .mobile-container {
     width: 400px;
     background-color: white;
-    border-radius: 3px;
+    border-radius: var(--main-radius);
     overflow: hidden;
+    padding-bottom: 1.5rem;
+    padding-inline: 0.75rem;
 }
 
 .c-button {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     background-color: transparent;
     cursor: pointer;
+    color: black;
 }
