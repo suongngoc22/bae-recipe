@@ -77,6 +77,10 @@ function getMealsLS () {
     return [];
 }
 
+async function addMealDetailLS (mealId) {
+    localStorage.setItem("mealDetail", JSON.stringify(mealId));
+}
+
 async function fetchFavMeals() {
     favMeals.innerHTML = ``;
     const mealIds = getMealsLS();
@@ -106,7 +110,7 @@ function addMealFav (mealData) {
     
     favMeal.addEventListener("click", () => {
         for (let i = 0; i < favMealContexts.length; i++) {
-            
+            console.log(favMealContexts);
             if (favMealContexts[i].id !== `fav-meal-context-${mealData.idMeal}`) {
                 favMealContexts[i].classList.add("hidden");          
             } else {
@@ -123,6 +127,13 @@ function addMealFav (mealData) {
         fetchFavMeals();
     });
 
+    const btnDetail = favMeal.querySelector(".fav-meal-detail");
+
+    btnDetail.addEventListener("click", () => {
+        addMealDetailLS(mealData.idMeal);
+        location.href = './meal.html';
+    })
+
     favMeals.appendChild(favMeal);
 }
 
@@ -136,5 +147,14 @@ searchBtn.addEventListener("click", () => {
 
 const reloadBtn = document.getElementById('reload-btn');
 reloadBtn.addEventListener("click", getRandomMeal);
+
+
+const mealPopup = document.getElementById('meal-popup');
+const closePopupBtn = document.getElementById('close-popup');
+
+closePopupBtn.addEventListener("click", () => {
+    mealPopup.classList.add("hidden");
+});
+
 
 // https://coolors.co/visualizer/cbe896-fffffc-beb7a4-ff7f11-ff1b1c

@@ -93,3 +93,8 @@ searchTerm.addEventListener("input", debounce(async (e) => {
         searchRecently.classList.remove("hidden");
     }
 },500));
+
+const backBtn = document.getElementById("back");
+backBtn.addEventListener("click", () => {
+    location.href = './';
+})

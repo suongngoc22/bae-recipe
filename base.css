@@ -64,6 +64,7 @@ body {
     align-items: center;
     margin: 0;
     /* min-height: 100vh; */
+    background: aliceblue;
 }
 
 /* common */
@@ -71,10 +72,10 @@ body {
 .mobile-container {
     width: 400px;
     background-color: white;
-    border-radius: var(--main-radius);
     overflow: hidden;
     padding-bottom: 1.5rem;
     padding-inline: 0.75rem;
+    min-height: 100vh;
 }
 
 .c-button {
