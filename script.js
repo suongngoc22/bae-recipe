@@ -33,18 +33,21 @@ function addMeal (mealData, random) {
 
     favBtn.addEventListener("click", () => {
         if (favBtn.classList.contains("active")) {
-            // thi remove no khoi danh sach yeu thich
-            removeMealLS(mealData.idMeal);
             favBtn.classList.remove("active");
+            removeMeal(mealData.idMeal);
+            removeMealLS(mealData.idMeal);
         } else {
             addMealLS(mealData.idMeal);
             favBtn.classList.toggle("active");
-            console.log(mealData.idMeal);
+            addMealFav(mealData);
         }
-        fetchFavMeals();
     });
 }
 
+function removeMeal (idMeal) {
+    const meal = document.getElementById(`fav-meal-${idMeal}`);
+    meal.remove();
+}
 
 async function getMealById (idMeal) {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
@@ -93,6 +96,7 @@ async function fetchFavMeals() {
 
 function addMealFav (mealData) {
     const favMeal = document.createElement('li');
+    favMeal.setAttribute("id", `fav-meal-${mealData.idMeal}`);
 
     favMeal.innerHTML = `
         <img src=${mealData.strMealThumb} 
@@ -110,7 +114,6 @@ function addMealFav (mealData) {
     
     favMeal.addEventListener("click", () => {
         for (let i = 0; i < favMealContexts.length; i++) {
-            console.log(favMealContexts);
             if (favMealContexts[i].id !== `fav-meal-context-${mealData.idMeal}`) {
                 favMealContexts[i].classList.add("hidden");          
             } else {
@@ -124,7 +127,7 @@ function addMealFav (mealData) {
 
     btnDelete.addEventListener("click", () => {
         removeMealLS(mealData.idMeal);
-        fetchFavMeals();
+        removeMeal(mealData.idMeal);
     });
 
     const btnDetail = favMeal.querySelector(".fav-meal-detail");

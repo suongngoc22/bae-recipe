@@ -54,3 +54,9 @@ async function fetchMealDetail() {
 }
 
 fetchMealDetail();
+
+
+// click on meal random --> meal detail
+// fav meal context
+// click search recently
+// header 
