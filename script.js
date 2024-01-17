@@ -42,6 +42,12 @@ function addMeal (mealData, random) {
             addMealFav(mealData);
         }
     });
+
+    // click on meal random
+    meal.addEventListener("click", () => {
+        addMealDetailLS(mealData.idMeal);
+        location.href = './meal.html';
+    })
 }
 
 function removeMeal (idMeal) {
@@ -110,9 +116,10 @@ function addMealFav (mealData) {
     `;
     
     // context menu
-    const favMealContexts = favMeal.getElementsByClassName("fav-meal-context");
+    const favMealContexts = favMeals.getElementsByClassName("fav-meal-context");
+    console.log(favMealContexts);
     
-    favMeal.addEventListener("click", () => {
+    favMeal.addEventListener("click", (e) => {
         for (let i = 0; i < favMealContexts.length; i++) {
             if (favMealContexts[i].id !== `fav-meal-context-${mealData.idMeal}`) {
                 favMealContexts[i].classList.add("hidden");          

@@ -55,8 +55,15 @@ async function fetchMealDetail() {
 
 fetchMealDetail();
 
+// header
+const backBtn = document.getElementById("back");
+backBtn.addEventListener("click", () => {
+    history.back();
+})
 
-// click on meal random --> meal detail
-// fav meal context
+const searchBtn = document.getElementById('search');
+searchBtn.addEventListener("click", () => {
+    location.href = './search.html';
+});
+
 // click search recently
-// header 

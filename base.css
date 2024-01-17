@@ -76,6 +76,7 @@ body {
     padding-bottom: 1.5rem;
     padding-inline: 0.75rem;
     min-height: 100vh;
+    position: relative;
 }
 
 .c-button {
