@@ -9,6 +9,11 @@ async function getRandomMeal () {
     addMeal(randomMeal, true);
 };
 
+function isCheckedFavMeal (idCheck) {
+    const mealIds = getMealsLS();
+    return mealIds.includes(idCheck);
+}
+
 function addMeal (mealData, random) {
     const meal = document.createElement('div');
     meal.classList.add("meal");
@@ -31,14 +36,20 @@ function addMeal (mealData, random) {
 
     const favBtn = meal.querySelector(".meal-body .fav-btn");
 
-    favBtn.addEventListener("click", () => {
+    const checkExist = isCheckedFavMeal(mealData.idMeal);
+    if (checkExist) {
+        favBtn.classList.add("active");
+    }
+
+    favBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
         if (favBtn.classList.contains("active")) {
             favBtn.classList.remove("active");
             removeMeal(mealData.idMeal);
             removeMealLS(mealData.idMeal);
         } else {
-            addMealLS(mealData.idMeal);
             favBtn.classList.toggle("active");
+            addMealLS(mealData.idMeal);
             addMealFav(mealData);
         }
     });
@@ -119,7 +130,7 @@ function addMealFav (mealData) {
     const favMealContexts = favMeals.getElementsByClassName("fav-meal-context");
     console.log(favMealContexts);
     
-    favMeal.addEventListener("click", (e) => {
+    favMeal.addEventListener("click", () => {
         for (let i = 0; i < favMealContexts.length; i++) {
             if (favMealContexts[i].id !== `fav-meal-context-${mealData.idMeal}`) {
                 favMealContexts[i].classList.add("hidden");          
@@ -168,3 +179,5 @@ closePopupBtn.addEventListener("click", () => {
 
 
 // https://coolors.co/visualizer/cbe896-fffffc-beb7a4-ff7f11-ff1b1c
+
+// Lọc random meal bị trùng
